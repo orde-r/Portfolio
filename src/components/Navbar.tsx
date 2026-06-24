@@ -63,17 +63,17 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-[100] border-b transition-[background-color,border-color,box-shadow] duration-300",
         isScrolled || isOpen
-          ? "border-white/50 bg-[#edf2f3]/72 shadow-[0_10px_38px_rgba(50,70,78,0.07)] backdrop-blur-2xl"
+          ? "border-[var(--glass-border)] bg-[var(--nav-surface)] shadow-[0_10px_38px_rgba(43,48,52,0.09)] backdrop-blur-2xl"
           : "border-transparent bg-transparent",
       )}
     >
       <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between px-6">
         <a
           href="#top"
-          className="inline-flex items-center text-sm font-semibold tracking-[-0.02em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
+          className="brand-cloud inline-flex items-center px-2 py-3 text-base font-semibold tracking-[-0.02em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
           onClick={() => setIsOpen(false)}
         >
-          Danielson
+          <span className="brand-cloud-name relative z-10">Danielson</span>
         </a>
 
         <div className="hidden items-center gap-6 md:flex">
@@ -82,7 +82,7 @@ export function Navbar() {
               key={link.id}
               href={link.href}
               className={cn(
-                "nav-link relative py-2 text-xs font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--deep)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)]",
+                "nav-link relative py-2 text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--deep)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)]",
                 activeSection === link.id && "is-active text-[var(--deep)]",
               )}
             >
@@ -92,7 +92,7 @@ export function Navbar() {
           <a
             href="/cv.md"
             download="Danielson-CV.md"
-            className="inline-flex min-h-10 items-center gap-2 rounded-full bg-[var(--deep)] px-4 py-2 text-xs font-semibold text-white shadow-[0_8px_24px_rgba(27,39,44,0.16)] transition hover:bg-[var(--deep-soft)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)] focus-visible:ring-offset-4"
+            className="inline-flex min-h-10 items-center gap-2 rounded-full bg-[var(--deep)] px-4 py-2 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(27,39,44,0.16)] transition hover:bg-[var(--deep-soft)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)] focus-visible:ring-offset-4"
           >
             <Download size={14} />
             Download CV
@@ -101,7 +101,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className="grid h-11 w-11 place-items-center rounded-full border border-white/60 bg-white/45 text-[var(--text-main)] shadow-sm backdrop-blur-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)] md:hidden"
+          className="grid h-11 w-11 place-items-center rounded-full border border-[var(--glass-border)] bg-[var(--glass)] text-[var(--text-main)] shadow-sm backdrop-blur-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)] md:hidden"
           aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-controls="mobile-navigation"
           aria-expanded={isOpen}
@@ -114,7 +114,7 @@ export function Navbar() {
       <div
         id="mobile-navigation"
         className={cn(
-          "grid overflow-hidden border-t border-white/50 bg-[#edf2f3]/90 backdrop-blur-2xl transition-[grid-template-rows] duration-300 md:hidden",
+          "grid overflow-hidden border-t border-[var(--glass-border)] bg-[var(--nav-surface-strong)] backdrop-blur-2xl transition-[grid-template-rows] duration-300 md:hidden",
           isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
         )}
       >

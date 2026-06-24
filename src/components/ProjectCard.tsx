@@ -1,24 +1,15 @@
 import { ArrowUpRight, Github } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
 import type { Project } from "../data/projects";
 import { Badge } from "./Badge";
 
 type ProjectCardProps = {
   project: Project;
-  index: number;
 };
 
-export function ProjectCard({ project, index }: ProjectCardProps) {
-  const reduceMotion = useReducedMotion();
-
+export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <motion.article
-      className="cloud-card project-card group flex h-full flex-col border border-white/50 bg-[var(--surface)] p-6 md:p-7"
-      initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.55, delay: index * 0.08 }}
-      whileHover={reduceMotion ? undefined : { y: -5 }}
+    <article
+      className="cloud-card interactive-card project-card group flex h-full flex-col border border-[var(--glass-border)] bg-[var(--surface)] p-6 md:p-7"
     >
       <div className="flex items-start justify-between">
         <span className="font-mono text-xs text-[var(--text-soft)]">{project.number}</span>
@@ -27,7 +18,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           target="_blank"
           rel="noreferrer"
           aria-label={`Open ${project.name} repository on GitHub`}
-          className="grid h-10 w-10 place-items-center rounded-full border border-[var(--border)] bg-white/25 text-[var(--text-muted)] transition hover:border-[var(--deep)] hover:bg-[var(--deep)] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)]"
+          className="grid h-10 w-10 place-items-center rounded-full border border-[var(--border)] bg-[var(--glass)] text-[var(--text-muted)] transition hover:border-[var(--deep)] hover:bg-[var(--deep)] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)]"
         >
           <ArrowUpRight size={16} />
         </a>
@@ -73,6 +64,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           <Github size={14} /> View source
         </a>
       </div>
-    </motion.article>
+    </article>
   );
 }

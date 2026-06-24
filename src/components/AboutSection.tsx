@@ -37,7 +37,7 @@ export function AboutSection() {
         </div>
 
         <aside>
-          <div className="cloud-card glass-surface p-8 md:p-10">
+          <div className="cloud-card glass-surface interactive-card p-8 md:p-10">
             <p className="mb-6 text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[var(--text-soft)]">At a glance</p>
             <dl>
               {facts.map(([label, value]) => (

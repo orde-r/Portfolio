@@ -5,7 +5,7 @@ import { SectionWrapper } from "./SectionWrapper";
 
 export function ExperienceSection() {
   return (
-    <div className="border-t border-white/30 bg-white/18">
+    <div className="border-t border-[var(--glass-border)] bg-[var(--glass)]">
       <SectionWrapper id="experience">
       <SectionHeading
         eyebrow="04 / Beyond code"

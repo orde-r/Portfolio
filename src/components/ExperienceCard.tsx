@@ -6,8 +6,8 @@ type ExperienceCardProps = {
 
 export function ExperienceCard({ experience }: ExperienceCardProps) {
   return (
-    <article className="group relative grid gap-3 pb-10 pl-9 md:grid-cols-[0.7fr_2fr] md:gap-10 md:pb-14 md:pl-12">
-      <span className="absolute left-[-0.3rem] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-[var(--deep)] bg-[var(--background)] ring-8 ring-[#e7ecee] transition-transform duration-300 group-hover:scale-150" aria-hidden="true" />
+    <article className="interactive-card group relative grid gap-3 pb-10 pl-9 md:grid-cols-[0.7fr_2fr] md:gap-10 md:pb-14 md:pl-12">
+      <span className="absolute left-[-0.3rem] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-[var(--deep)] bg-[var(--background)] ring-8 ring-[#b3b7b9] transition-transform duration-300 group-hover:scale-150" aria-hidden="true" />
       <div>
         <p className="text-[0.67rem] font-semibold uppercase tracking-[0.18em] text-[var(--text-soft)]">{experience.period}</p>
       </div>

@@ -7,7 +7,7 @@ import { SectionWrapper } from "./SectionWrapper";
 
 export function ProjectsSection() {
   return (
-    <div className="relative overflow-hidden border-y border-white/35 bg-[var(--background-soft)]/55">
+    <div className="relative overflow-hidden border-y border-[var(--glass-border)] bg-[var(--background-soft)]/55">
       <FogAtmosphere className="inset-0" subtle />
       <CloudCluster className="-left-16 bottom-10 hidden scale-75 opacity-45 lg:block" />
       <SectionWrapper id="projects">
@@ -17,8 +17,8 @@ export function ProjectsSection() {
           description="Three collaborations where I translated product problems into interfaces, integrations, and working application features."
         />
         <div className="grid grid-cols-1 gap-x-5 gap-y-12 pt-5 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.name} project={project} index={index} />
+          {projects.map((project) => (
+            <ProjectCard key={project.name} project={project} />
           ))}
         </div>
       </SectionWrapper>

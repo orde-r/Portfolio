@@ -7,7 +7,7 @@ type SkillGroupProps = {
 
 export function SkillGroup({ group }: SkillGroupProps) {
   return (
-    <article className="cloud-card glass-surface group relative flex min-h-[20rem] flex-col p-6">
+    <article className="cloud-card glass-surface interactive-card group relative flex min-h-[20rem] flex-col p-6">
       <div className="mb-10 flex items-center justify-between">
         <span className="grid h-8 w-8 place-items-center rounded-full bg-[var(--deep)] font-mono text-[0.62rem] text-white shadow-[0_6px_18px_rgba(27,39,44,0.16)]">{group.number}</span>
         <span className="h-px w-8 bg-[var(--deep)] transition-all duration-300 group-hover:w-14" aria-hidden="true" />
