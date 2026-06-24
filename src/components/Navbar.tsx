@@ -92,7 +92,7 @@ export function Navbar() {
           <a
             href="/cv.md"
             download="Danielson-CV.md"
-            className="inline-flex min-h-10 items-center gap-2 rounded-full bg-[var(--deep)] px-4 py-2 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(27,39,44,0.16)] transition hover:bg-[var(--deep-soft)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)] focus-visible:ring-offset-4"
+            className="interactive-button inline-flex min-h-10 items-center gap-2 rounded-full bg-[var(--deep)] px-4 py-2 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(27,39,44,0.16)] hover:bg-[var(--deep-soft)] hover:shadow-[0_12px_30px_rgba(27,39,44,0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)] focus-visible:ring-offset-4"
           >
             <Download size={14} />
             Download CV
@@ -101,7 +101,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className="grid h-11 w-11 place-items-center rounded-full border border-[var(--glass-border)] bg-[var(--glass)] text-[var(--text-main)] shadow-sm backdrop-blur-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)] md:hidden"
+          className="interactive-button grid h-11 w-11 place-items-center rounded-full border border-[var(--glass-border)] bg-[var(--glass)] text-[var(--text-main)] shadow-sm backdrop-blur-xl hover:border-[var(--border-strong)] hover:bg-[var(--glass-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)] md:hidden"
           aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-controls="mobile-navigation"
           aria-expanded={isOpen}
@@ -134,7 +134,7 @@ export function Navbar() {
               href="/cv.md"
               download="Danielson-CV.md"
               onClick={() => setIsOpen(false)}
-              className="my-3 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[var(--deep)] px-5 py-2.5 text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)]"
+              className="interactive-button my-3 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[var(--deep)] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[var(--deep-soft)] hover:shadow-[0_12px_30px_rgba(27,39,44,0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)]"
             >
               <Download size={15} />
               Download CV

@@ -18,7 +18,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           target="_blank"
           rel="noreferrer"
           aria-label={`Open ${project.name} repository on GitHub`}
-          className="grid h-10 w-10 place-items-center rounded-full border border-[var(--border)] bg-[var(--glass)] text-[var(--text-muted)] transition hover:border-[var(--deep)] hover:bg-[var(--deep)] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)]"
+          className="interactive-button grid h-10 w-10 place-items-center rounded-full border border-[var(--border)] bg-[var(--glass)] text-[var(--text-muted)] hover:border-[var(--deep)] hover:bg-[var(--deep)] hover:text-white hover:shadow-[0_9px_22px_rgba(27,48,57,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)]"
         >
           <ArrowUpRight size={16} />
         </a>

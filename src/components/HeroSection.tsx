@@ -10,7 +10,7 @@ export function HeroSection() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_50%_42%,rgba(201,204,206,0.7),transparent_36rem)] pt-[4.5rem] text-center"
+      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_50%_42%,rgba(218,232,237,0.76),transparent_36rem)] pt-[4.5rem] text-center"
     >
       <FogAtmosphere className="inset-0" />
       <CloudCluster className="-left-16 top-[18%] hidden opacity-70 md:block" />
@@ -29,12 +29,12 @@ export function HeroSection() {
           <p>Danielson&nbsp; / &nbsp;Software Engineer</p>
         </div>
 
-        <h1 className="mx-auto max-w-full text-balance text-[clamp(2.75rem,8.7vw,7.7rem)] font-semibold leading-[0.9] tracking-[-0.07em] text-[var(--text-main)] [text-shadow:0_2px_28px_rgba(198,201,203,0.68)] md:max-w-5xl md:leading-[0.88] md:tracking-[-0.075em]">
+        <h1 className="mx-auto max-w-full text-balance text-[clamp(2.75rem,8.7vw,7.7rem)] font-semibold leading-[0.9] tracking-[-0.07em] text-[var(--text-main)] [text-shadow:0_2px_28px_rgba(218,232,237,0.74)] md:max-w-5xl md:leading-[0.88] md:tracking-[-0.075em]">
           Building software
           <span className="block font-normal text-[var(--text-muted)]">people can rely on.</span>
         </h1>
 
-        <p className="mx-auto mt-8 max-w-2xl text-balance text-base leading-7 text-[var(--text-muted)] [text-shadow:0_1px_14px_rgba(198,201,203,0.7)] md:mt-9 md:text-lg md:leading-8">
+        <p className="mx-auto mt-8 max-w-2xl text-balance text-base leading-7 text-[var(--text-muted)] [text-shadow:0_1px_14px_rgba(218,232,237,0.76)] md:mt-9 md:text-lg md:leading-8">
           From thoughtful interfaces to reliable APIs, I turn product ideas into clear web, mobile, and backend experiences.
         </p>
 

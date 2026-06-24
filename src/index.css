@@ -5,29 +5,29 @@
   font-family: "Instrument Sans Variable", "Instrument Sans", "Segoe UI", Helvetica, Arial, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  --background: #bec1c3;
-  --background-soft: #b1b5b7;
-  --surface: rgb(211 214 216 / 0.68);
-  --surface-solid: #dcddde;
-  --surface-muted: rgb(178 182 185 / 0.78);
-  --text-main: #1d2225;
-  --text-muted: #50575b;
-  --text-soft: #6e7579;
-  --border: rgb(58 64 68 / 0.24);
-  --border-strong: rgb(42 48 52 / 0.38);
-  --deep: #262b2e;
-  --deep-soft: #41484c;
-  --mist: #f4f5f5;
-  --storm: #202528;
-  --nav-surface: rgb(188 192 194 / 0.78);
-  --nav-surface-strong: rgb(188 192 194 / 0.94);
-  --glass: rgb(205 208 210 / 0.42);
-  --glass-strong: rgb(216 218 219 / 0.58);
-  --glass-border: rgb(226 228 229 / 0.46);
-  --cloud-highlight: #d5d7d8;
-  --cloud-light: #c9ccce;
-  --cloud-mid: #b9bdc0;
-  --cloud-shadow: #a4a9ac;
+  --background: #d1e0e7;
+  --background-soft: #c5d7df;
+  --surface: rgb(232 241 244 / 0.72);
+  --surface-solid: #e7f0f3;
+  --surface-muted: rgb(195 213 221 / 0.78);
+  --text-main: #1d2c34;
+  --text-muted: #536b77;
+  --text-soft: #718691;
+  --border: rgb(68 93 105 / 0.2);
+  --border-strong: rgb(47 73 85 / 0.34);
+  --deep: #243b46;
+  --deep-soft: #3e5965;
+  --mist: #f3f8fa;
+  --storm: #1b3039;
+  --nav-surface: rgb(209 225 232 / 0.82);
+  --nav-surface-strong: rgb(209 225 232 / 0.95);
+  --glass: rgb(219 232 237 / 0.46);
+  --glass-strong: rgb(232 241 244 / 0.64);
+  --glass-border: rgb(241 247 249 / 0.52);
+  --cloud-highlight: #e6f0f3;
+  --cloud-light: #d6e5ea;
+  --cloud-mid: #c2d6df;
+  --cloud-shadow: #acc5cf;
 }
 
 * {
@@ -44,9 +44,9 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background:
-    radial-gradient(circle at 14% 8%, rgb(216 218 219 / 0.66), transparent 28rem),
-    radial-gradient(circle at 84% 24%, rgb(117 123 127 / 0.6), transparent 38rem),
-    linear-gradient(180deg, #c9ccce 0%, var(--background) 43%, #a4a9ac 100%);
+    radial-gradient(circle at 14% 8%, rgb(236 244 247 / 0.76), transparent 28rem),
+    radial-gradient(circle at 84% 24%, rgb(145 175 187 / 0.54), transparent 38rem),
+    linear-gradient(180deg, #dce9ee 0%, var(--background) 43%, #b8ced7 100%);
   color: var(--text-main);
 }
 
@@ -57,7 +57,7 @@ body::before {
   z-index: 80;
   pointer-events: none;
   background-image:
-    radial-gradient(rgb(31 36 39 / 0.05) 0.55px, transparent 0.7px),
+    radial-gradient(rgb(35 59 70 / 0.05) 0.55px, transparent 0.7px),
     radial-gradient(rgb(255 255 255 / 0.16) 0.5px, transparent 0.7px);
   background-position: 0 0, 9px 11px;
   background-size: 17px 17px, 23px 23px;
@@ -67,6 +67,24 @@ body::before {
 button,
 a {
   -webkit-tap-highlight-color: transparent;
+}
+
+.interactive-button {
+  transform: translate3d(0, 0, 0);
+  transition-property: transform, background-color, border-color, color, box-shadow, opacity;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .interactive-button:hover {
+    transform: translate3d(0, -0.16rem, 0);
+  }
+}
+
+.interactive-button:active {
+  transform: translate3d(0, 0, 0) scale(0.97);
+  transition-duration: 120ms;
 }
 
 ::selection {
@@ -168,8 +186,8 @@ a {
 
 .fog-bank {
   background:
-    radial-gradient(ellipse at 34% 50%, rgb(215 217 218 / 0.76) 0 18%, rgb(194 198 200 / 0.6) 42%, transparent 72%),
-    radial-gradient(ellipse at 68% 48%, rgb(163 168 171 / 0.64) 0 16%, transparent 64%);
+    radial-gradient(ellipse at 34% 50%, rgb(240 247 249 / 0.8) 0 18%, rgb(215 230 235 / 0.62) 42%, transparent 72%),
+    radial-gradient(ellipse at 68% 48%, rgb(186 207 216 / 0.58) 0 16%, transparent 64%);
   filter: blur(30px);
   opacity: 0.82;
 }
@@ -201,7 +219,7 @@ a {
 
 .fog-veil {
   inset: 8% -15%;
-  background: linear-gradient(105deg, transparent 4%, rgb(222 224 225 / 0.2) 32%, rgb(153 159 163 / 0.18) 60%, transparent 90%);
+  background: linear-gradient(105deg, transparent 4%, rgb(235 244 247 / 0.22) 32%, rgb(164 188 198 / 0.16) 60%, transparent 90%);
   filter: blur(18px);
   animation: fog-veil-shift 28s ease-in-out infinite alternate;
 }
@@ -235,7 +253,7 @@ a {
   display: block;
   border: 1px solid var(--glass-border);
   border-radius: 999px;
-  background: linear-gradient(145deg, rgb(212 214 215 / 0.76), rgb(174 179 182 / 0.64));
+  background: linear-gradient(145deg, rgb(239 247 249 / 0.8), rgb(199 217 224 / 0.62));
   box-shadow: inset 5px 7px 16px rgb(235 236 236 / 0.34);
   backdrop-filter: blur(7px);
 }
@@ -292,7 +310,7 @@ a {
     radial-gradient(circle at 18% 17%, var(--cloud-highlight) 0 13%, transparent 31%),
     radial-gradient(circle at 68% 23%, var(--cloud-light) 0 18%, transparent 37%),
     radial-gradient(circle at 32% 59%, var(--cloud-mid) 0 22%, transparent 44%),
-    radial-gradient(circle at 76% 75%, #cfd2d4 0 20%, transparent 42%),
+    radial-gradient(circle at 76% 75%, #e7f0f3 0 20%, transparent 42%),
     linear-gradient(135deg, var(--cloud-light) 0%, var(--cloud-shadow) 100%);
   filter: drop-shadow(0 0 48px rgb(48 54 58 / 0.32));
   will-change: transform, opacity;
@@ -358,10 +376,10 @@ a {
   width: 9.5rem;
   height: 4.4rem;
   background:
-    radial-gradient(circle at 20% 72%, rgb(213 215 216 / 0.92) 0 18%, transparent 19%),
-    radial-gradient(circle at 43% 53%, rgb(207 210 211 / 0.94) 0 29%, transparent 30%),
-    radial-gradient(circle at 68% 66%, rgb(190 193 195 / 0.92) 0 25%, transparent 26%),
-    radial-gradient(circle at 87% 78%, rgb(176 180 183 / 0.88) 0 15%, transparent 16%);
+    radial-gradient(circle at 20% 72%, rgb(236 245 248 / 0.94) 0 18%, transparent 19%),
+    radial-gradient(circle at 43% 53%, rgb(228 239 243 / 0.96) 0 29%, transparent 30%),
+    radial-gradient(circle at 68% 66%, rgb(209 225 231 / 0.92) 0 25%, transparent 26%),
+    radial-gradient(circle at 87% 78%, rgb(193 213 221 / 0.88) 0 15%, transparent 16%);
   filter: drop-shadow(0 -7px 13px rgb(65 71 75 / 0.09));
   pointer-events: none;
   transition: transform 450ms ease;
