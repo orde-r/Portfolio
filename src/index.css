@@ -123,29 +123,39 @@ a {
 }
 
 .brand-cloud::before {
+  --brand-cloud-shape:
+    radial-gradient(ellipse 0.88rem 0.66rem at 14% 74%, #000 98%, transparent 100%),
+    radial-gradient(ellipse 1.32rem 1.02rem at 30% 59%, #000 98%, transparent 100%),
+    radial-gradient(ellipse 1.72rem 1.42rem at 50% 52%, #000 98%, transparent 100%),
+    radial-gradient(ellipse 1.3rem 0.96rem at 71% 59%, #000 98%, transparent 100%),
+    radial-gradient(ellipse 0.86rem 0.64rem at 86% 74%, #000 98%, transparent 100%),
+    radial-gradient(ellipse 3.35rem 0.74rem at 51% 82%, #000 98%, transparent 100%);
   content: "";
   position: absolute;
   z-index: 0;
-  left: -0.55rem;
-  bottom: 0.35rem;
-  width: 6.9rem;
-  height: 2.65rem;
+  left: -0.68rem;
+  bottom: 0.08rem;
+  width: 7.15rem;
+  height: 3.2rem;
   pointer-events: none;
   background:
-    radial-gradient(circle at 15% 68%, var(--cloud-mid) 0 15%, transparent 16%),
-    radial-gradient(circle at 36% 49%, var(--cloud-light) 0 24%, transparent 25%),
-    radial-gradient(circle at 61% 57%, var(--cloud-highlight) 0 29%, transparent 30%),
-    radial-gradient(circle at 84% 71%, var(--cloud-mid) 0 17%, transparent 18%),
-    radial-gradient(ellipse at 50% 78%, var(--cloud-light) 0 39%, transparent 40%);
-  filter: drop-shadow(0 5px 8px rgb(55 61 65 / 0.14));
-  opacity: 0.72;
+    radial-gradient(ellipse at 35% 18%, rgb(255 255 255 / 0.72) 0 4%, transparent 40%),
+    linear-gradient(155deg, var(--cloud-highlight) 5%, var(--cloud-light) 54%, var(--cloud-shadow));
+  -webkit-mask: var(--brand-cloud-shape);
+  mask: var(--brand-cloud-shape);
+  filter: drop-shadow(0 4px 7px rgb(55 61 65 / 0.08));
+  opacity: 0.5;
   transform: translate3d(0, 0, 0);
-  transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1), opacity 350ms ease;
+  transition:
+    transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 350ms ease,
+    opacity 350ms ease;
 }
 
 .brand-cloud:hover::before {
-  opacity: 0.86;
-  transform: translate3d(0.12rem, -0.08rem, 0) scale(1.02);
+  filter: drop-shadow(0 6px 9px rgb(55 61 65 / 0.11));
+  opacity: 0.66;
+  transform: translate3d(0.1rem, -0.07rem, 0) scale(1.015);
 }
 
 .brand-cloud-name {
@@ -244,52 +254,113 @@ a {
   width: 14rem;
   height: 6rem;
   pointer-events: none;
-  filter: drop-shadow(0 18px 24px rgb(55 60 64 / 0.12));
+  isolation: isolate;
+}
+
+.cloud-body {
+  position: absolute;
+  inset: 0;
+  display: block;
+  filter: drop-shadow(0 18px 22px rgb(55 60 64 / 0.13));
   animation: cloud-float 9s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
 .cloud-puff {
   position: absolute;
   display: block;
-  border: 1px solid var(--glass-border);
+  z-index: 2;
+  border: 1px solid rgb(255 255 255 / 0.42);
   border-radius: 999px;
-  background: linear-gradient(145deg, rgb(239 247 249 / 0.8), rgb(199 217 224 / 0.62));
-  box-shadow: inset 5px 7px 16px rgb(235 236 236 / 0.34);
-  backdrop-filter: blur(7px);
+  background:
+    radial-gradient(circle at 34% 24%, rgb(255 255 255 / 0.82) 0 10%, transparent 38%),
+    linear-gradient(150deg, rgb(245 251 252 / 0.92) 7%, rgb(217 233 238 / 0.84) 56%, rgb(180 204 213 / 0.7) 100%);
+  box-shadow:
+    inset 8px 10px 20px rgb(255 255 255 / 0.38),
+    inset -8px -10px 18px rgb(122 158 171 / 0.12);
+  backdrop-filter: blur(9px);
 }
 
 .cloud-puff-one {
-  left: 16%;
-  bottom: 12%;
-  width: 38%;
-  height: 62%;
-}
-
-.cloud-puff-two {
-  left: 37%;
-  top: 2%;
-  width: 37%;
-  height: 82%;
-}
-
-.cloud-puff-three {
-  right: 7%;
-  bottom: 10%;
+  left: 10%;
+  bottom: 11%;
   width: 36%;
   height: 58%;
 }
 
-.cloud-puff-base {
+.cloud-puff-two {
+  left: 30%;
+  top: 1%;
+  width: 38%;
+  height: 84%;
+}
+
+.cloud-puff-three {
+  right: 16%;
+  bottom: 8%;
+  width: 34%;
+  height: 66%;
+}
+
+.cloud-puff-four {
   right: 3%;
+  bottom: 7%;
+  width: 28%;
+  height: 48%;
+}
+
+.cloud-puff-base {
+  right: 1%;
   bottom: 0;
-  left: 3%;
-  height: 46%;
+  left: 1%;
+  z-index: 3;
+  height: 43%;
+  background:
+    linear-gradient(180deg, rgb(233 244 247 / 0.9), rgb(194 217 225 / 0.78));
+}
+
+.cloud-shadow {
+  position: absolute;
+  right: 8%;
+  bottom: -5%;
+  left: 8%;
+  z-index: 1;
+  height: 34%;
+  border-radius: 50%;
+  background: rgb(84 116 128 / 0.2);
+  filter: blur(12px);
+}
+
+.cloud-shine {
+  position: absolute;
+  top: 13%;
+  left: 37%;
+  z-index: 4;
+  width: 22%;
+  height: 20%;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.52);
+  filter: blur(8px);
 }
 
 .cloud-cluster-dark .cloud-puff {
   border-color: rgb(255 255 255 / 0.09);
-  background: linear-gradient(145deg, rgb(160 164 167 / 0.2), rgb(82 88 92 / 0.1));
-  box-shadow: inset 5px 7px 16px rgb(255 255 255 / 0.04);
+  background:
+    radial-gradient(circle at 34% 24%, rgb(255 255 255 / 0.1) 0 10%, transparent 38%),
+    linear-gradient(150deg, rgb(170 176 180 / 0.22), rgb(83 92 97 / 0.14));
+  box-shadow: inset 7px 9px 18px rgb(255 255 255 / 0.045), inset -8px -10px 18px rgb(0 0 0 / 0.08);
+}
+
+.cloud-cluster-dark .cloud-puff-base {
+  background: linear-gradient(180deg, rgb(135 143 148 / 0.2), rgb(71 80 85 / 0.13));
+}
+
+.cloud-cluster-dark .cloud-shadow {
+  background: rgb(0 0 0 / 0.22);
+}
+
+.cloud-cluster-dark .cloud-shine {
+  background: rgb(255 255 255 / 0.08);
 }
 
 .cloud-opening {
@@ -298,7 +369,6 @@ a {
   z-index: 300;
   overflow: hidden;
   pointer-events: none;
-  animation: cloud-opening-hide 2.35s linear forwards;
 }
 
 .cloud-door-panel {
@@ -306,59 +376,42 @@ a {
   top: -8%;
   bottom: -8%;
   width: 58%;
-  background:
-    radial-gradient(circle at 18% 17%, var(--cloud-highlight) 0 13%, transparent 31%),
-    radial-gradient(circle at 68% 23%, var(--cloud-light) 0 18%, transparent 37%),
-    radial-gradient(circle at 32% 59%, var(--cloud-mid) 0 22%, transparent 44%),
-    radial-gradient(circle at 76% 75%, #e7f0f3 0 20%, transparent 42%),
-    linear-gradient(135deg, var(--cloud-light) 0%, var(--cloud-shadow) 100%);
-  filter: drop-shadow(0 0 48px rgb(48 54 58 / 0.32));
-  will-change: transform, opacity;
+  background: linear-gradient(160deg, #edf4f6 0%, #d6e5ea 58%, #b7cdd6 100%);
+  isolation: isolate;
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 .cloud-door-left {
   left: -5%;
-  border-radius: 0 42% 46% 0 / 0 12% 14% 0;
-  animation: cloud-door-open-left 1.65s 0.38s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  animation: cloud-door-open-left 1.2s 0.3s cubic-bezier(0.55, 0, 1, 0.45) forwards;
 }
 
 .cloud-door-right {
   right: -5%;
-  border-radius: 42% 0 0 46% / 12% 0 0 14%;
-  animation: cloud-door-open-right 1.65s 0.38s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  animation: cloud-door-open-right 1.2s 0.3s cubic-bezier(0.55, 0, 1, 0.45) forwards;
 }
 
-.cloud-door-puff {
+.cloud-door-art {
   position: absolute;
   display: block;
-  width: 34vw;
-  height: 34vw;
-  max-width: 32rem;
-  max-height: 32rem;
-  min-width: 14rem;
-  min-height: 14rem;
-  border-radius: 50%;
-  background: radial-gradient(circle at 38% 34%, var(--cloud-highlight) 0 18%, var(--cloud-mid) 62%, var(--cloud-shadow) 100%);
-  box-shadow: inset 18px 22px 44px rgb(232 233 234 / 0.36);
+  width: 160vw;
+  height: 120vh;
 }
 
-.cloud-door-left .cloud-door-puff { right: -15%; }
-.cloud-door-right .cloud-door-puff { left: -15%; }
-.cloud-door-right .cloud-door-puff { transform: scaleX(-1); }
-.cloud-door-puff-one { top: -8%; }
-.cloud-door-puff-two { top: 34%; }
-.cloud-door-puff-three { bottom: -13%; }
-
-.cloud-opening-glow {
-  position: absolute;
-  inset-block: 0;
-  left: 50%;
-  width: 8rem;
-  transform: translateX(-50%);
-  background: linear-gradient(90deg, transparent, rgb(218 221 222 / 0.68), transparent);
-  filter: blur(18px);
-  animation: cloud-opening-glow 1.75s 0.25s ease-out forwards;
+.cloud-door-left .cloud-door-art {
+  right: -20vw;
 }
+
+.cloud-door-right .cloud-door-art {
+  left: -20vw;
+  transform: scaleX(-1);
+}
+
+.cloud-door-left  .cloud-door-art-one { top: -10%; }
+.cloud-door-left  .cloud-door-art-two { top:  50%; }
+.cloud-door-right .cloud-door-art-one { top:  -5%; }
+.cloud-door-right .cloud-door-art-two { top:  52%; }
 
 .cloud-card {
   position: relative;
@@ -368,21 +421,35 @@ a {
 }
 
 .cloud-card::before {
+  --card-cloud-shape:
+    radial-gradient(ellipse 1.15rem 0.92rem at 17% 72%, #000 98%, transparent 100%),
+    radial-gradient(ellipse 1.75rem 1.55rem at 40% 50%, #000 98%, transparent 100%),
+    radial-gradient(ellipse 1.4rem 1.12rem at 64% 61%, #000 98%, transparent 100%),
+    radial-gradient(ellipse 0.95rem 0.78rem at 84% 72%, #000 98%, transparent 100%),
+    radial-gradient(ellipse 3.65rem 1rem at 51% 82%, #000 98%, transparent 100%);
   content: "";
   position: absolute;
   z-index: 0;
-  top: -2.05rem;
-  right: 1.15rem;
-  width: 9.5rem;
-  height: 4.4rem;
+  top: -1.8rem;
+  right: 1.5rem;
+  width: 8rem;
+  height: 3.75rem;
   background:
-    radial-gradient(circle at 20% 72%, rgb(236 245 248 / 0.94) 0 18%, transparent 19%),
-    radial-gradient(circle at 43% 53%, rgb(228 239 243 / 0.96) 0 29%, transparent 30%),
-    radial-gradient(circle at 68% 66%, rgb(209 225 231 / 0.92) 0 25%, transparent 26%),
-    radial-gradient(circle at 87% 78%, rgb(193 213 221 / 0.88) 0 15%, transparent 16%);
-  filter: drop-shadow(0 -7px 13px rgb(65 71 75 / 0.09));
+    radial-gradient(ellipse at 36% 19%, rgb(255 255 255 / 0.88) 0 3%, transparent 38%),
+    radial-gradient(ellipse at 18% 43%, rgb(255 255 255 / 0.4), transparent 42%),
+    linear-gradient(155deg, rgb(248 252 253 / 0.98) 8%, rgb(220 235 240 / 0.96) 56%, rgb(176 202 212 / 0.92) 100%);
+  -webkit-mask: var(--card-cloud-shape);
+  mask: var(--card-cloud-shape);
+  filter:
+    drop-shadow(0 -1px 0 rgb(255 255 255 / 0.34))
+    drop-shadow(0 6px 9px rgb(65 82 89 / 0.1));
+  opacity: 0.72;
+  transform-origin: 72% 78%;
   pointer-events: none;
-  transition: transform 450ms ease;
+  transition:
+    transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 450ms ease,
+    opacity 350ms ease;
 }
 
 .cloud-card::after {
@@ -396,15 +463,26 @@ a {
 }
 
 .cloud-card:hover::before {
-  transform: translate3d(-0.35rem, -0.15rem, 0) scale(1.025);
+  filter:
+    drop-shadow(0 -1px 0 rgb(255 255 255 / 0.4))
+    drop-shadow(0 8px 11px rgb(65 82 89 / 0.12));
+  opacity: 0.82;
+  transform: translate3d(-0.18rem, -0.12rem, 0) scale(1.02) rotate(-0.35deg);
 }
 
 .cloud-card-dark::before {
   background:
-    radial-gradient(circle at 20% 72%, rgb(145 150 154 / 0.2) 0 18%, transparent 19%),
-    radial-gradient(circle at 43% 53%, rgb(122 128 132 / 0.22) 0 29%, transparent 30%),
-    radial-gradient(circle at 68% 66%, rgb(90 96 100 / 0.22) 0 25%, transparent 26%),
-    radial-gradient(circle at 87% 78%, rgb(72 78 82 / 0.2) 0 15%, transparent 16%);
+    radial-gradient(ellipse at 36% 19%, rgb(255 255 255 / 0.11) 0 3%, transparent 38%),
+    linear-gradient(155deg, rgb(166 174 179 / 0.26), rgb(97 108 114 / 0.22) 58%, rgb(48 59 65 / 0.18));
+  filter:
+    drop-shadow(0 -1px 0 rgb(255 255 255 / 0.06))
+    drop-shadow(0 6px 9px rgb(0 0 0 / 0.15));
+}
+
+.cloud-card-dark:hover::before {
+  filter:
+    drop-shadow(0 -1px 0 rgb(255 255 255 / 0.08))
+    drop-shadow(0 8px 11px rgb(0 0 0 / 0.18));
 }
 
 .cloud-card > * {
@@ -459,40 +537,25 @@ a {
 }
 
 @keyframes cloud-float {
-  from { transform: translate3d(-2%, 0, 0); }
-  to { transform: translate3d(7%, -8%, 0); }
+  from { transform: translate3d(-2%, 1%, 0) rotate(-0.6deg); }
+  to { transform: translate3d(7%, -8%, 0) rotate(0.8deg); }
 }
 
 @keyframes cloud-door-open-left {
-  0% { transform: translate3d(0, 0, 0) scale(1.02); opacity: 1; }
-  72% { opacity: 1; }
-  100% { transform: translate3d(-112%, -2%, 0) scale(1.08); opacity: 0; }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-112%, -1%, 0); }
 }
 
 @keyframes cloud-door-open-right {
-  0% { transform: translate3d(0, 0, 0) scale(1.02); opacity: 1; }
-  72% { opacity: 1; }
-  100% { transform: translate3d(112%, 2%, 0) scale(1.08); opacity: 0; }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(112%, 1%, 0); }
 }
 
-@keyframes cloud-opening-glow {
-  0% { opacity: 0; transform: translateX(-50%) scaleX(0.1); }
-  34% { opacity: 0.92; }
-  100% { opacity: 0; transform: translateX(-50%) scaleX(3.2); }
-}
 
-@keyframes cloud-opening-hide {
-  0%, 92% { visibility: visible; }
-  100% { visibility: hidden; }
-}
 
 @media (max-width: 767px) {
   .fog-bank {
     filter: blur(22px);
-  }
-
-  .cloud-cluster {
-    transform: scale(0.72);
   }
 
   body::before {
@@ -516,9 +579,8 @@ a {
 
   .fog-bank,
   .fog-veil,
-  .cloud-cluster,
-  .cloud-door-panel,
-  .cloud-opening-glow {
+  .cloud-body,
+  .cloud-door-panel {
     animation: none;
   }
 

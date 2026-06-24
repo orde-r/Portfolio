@@ -11,10 +11,15 @@ export function CloudCluster({ className, dark = false }: CloudClusterProps) {
       aria-hidden="true"
       className={cn("cloud-cluster", dark && "cloud-cluster-dark", className)}
     >
-      <span className="cloud-puff cloud-puff-one" />
-      <span className="cloud-puff cloud-puff-two" />
-      <span className="cloud-puff cloud-puff-three" />
-      <span className="cloud-puff cloud-puff-base" />
+      <span className="cloud-body">
+        <span className="cloud-shadow" />
+        <span className="cloud-puff cloud-puff-one" />
+        <span className="cloud-puff cloud-puff-two" />
+        <span className="cloud-puff cloud-puff-three" />
+        <span className="cloud-puff cloud-puff-four" />
+        <span className="cloud-puff cloud-puff-base" />
+        <span className="cloud-shine" />
+      </span>
     </div>
   );
 }
