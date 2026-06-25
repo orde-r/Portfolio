@@ -38,26 +38,6 @@ export function CloudTrail() {
       context.setTransform(ratio, 0, 0, ratio, 0, 0);
     };
 
-    const onPointerMove = (event: PointerEvent) => {
-      if (event.pointerType === "touch") return;
-
-      const distance = Math.hypot(event.clientX - lastX, event.clientY - lastY);
-      if (distance < 16) return;
-
-      particles.push({
-        x: event.clientX + (Math.random() - 0.5) * 5,
-        y: event.clientY + (Math.random() - 0.5) * 5,
-        radius: 11 + Math.random() * 8,
-        life: 0,
-        maxLife: 46 + Math.random() * 24,
-        driftX: (Math.random() - 0.5) * 0.18,
-        driftY: -0.16 - Math.random() * 0.18,
-      });
-      particles = particles.slice(-24);
-      lastX = event.clientX;
-      lastY = event.clientY;
-    };
-
     const drawPuff = (particle: CloudParticle, alpha: number, scale: number) => {
       const radius = particle.radius * scale;
       const gradient = context.createRadialGradient(
@@ -78,7 +58,13 @@ export function CloudTrail() {
       context.fill();
     };
 
+    const requestRender = () => {
+      if (animationFrame !== 0) return;
+      animationFrame = requestAnimationFrame(render);
+    };
+
     const render = () => {
+      animationFrame = 0;
       context.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
       particles = particles.filter((particle) => {
@@ -104,16 +90,36 @@ export function CloudTrail() {
         return true;
       });
 
-      animationFrame = requestAnimationFrame(render);
+      if (particles.length > 0) requestRender();
+    };
+
+    const onPointerMove = (event: PointerEvent) => {
+      if (event.pointerType === "touch") return;
+
+      const distance = Math.hypot(event.clientX - lastX, event.clientY - lastY);
+      if (distance < 16) return;
+
+      particles.push({
+        x: event.clientX + (Math.random() - 0.5) * 5,
+        y: event.clientY + (Math.random() - 0.5) * 5,
+        radius: 11 + Math.random() * 8,
+        life: 0,
+        maxLife: 46 + Math.random() * 24,
+        driftX: (Math.random() - 0.5) * 0.18,
+        driftY: -0.16 - Math.random() * 0.18,
+      });
+      particles = particles.slice(-24);
+      lastX = event.clientX;
+      lastY = event.clientY;
+      requestRender();
     };
 
     resize();
     window.addEventListener("resize", resize, { passive: true });
     window.addEventListener("pointermove", onPointerMove, { passive: true });
-    animationFrame = requestAnimationFrame(render);
 
     return () => {
-      cancelAnimationFrame(animationFrame);
+      if (animationFrame !== 0) cancelAnimationFrame(animationFrame);
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", onPointerMove);
     };

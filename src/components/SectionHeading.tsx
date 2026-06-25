@@ -8,7 +8,7 @@ export function SectionHeading({ eyebrow, title, description }: SectionHeadingPr
   return (
     <header className="mb-10 grid gap-5 border-t border-[var(--border)] pt-5 md:mb-14 md:grid-cols-[0.8fr_2fr] md:gap-12">
       {eyebrow && (
-        <p className="w-fit self-start rounded-full border border-[var(--glass-border)] bg-[var(--glass)] px-3 py-2 text-[0.62rem] font-semibold uppercase tracking-[0.19em] text-[var(--text-muted)] shadow-sm backdrop-blur-xl">
+        <p className="w-fit self-start rounded-full border border-[var(--glass-border)] bg-[var(--glass)] px-3 py-2 text-[0.62rem] font-semibold uppercase tracking-[0.19em] text-[var(--text-muted)] shadow-sm">
           {eyebrow}
         </p>
       )}

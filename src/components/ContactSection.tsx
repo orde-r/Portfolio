@@ -11,7 +11,7 @@ export function ContactSection() {
       <CloudCluster className="-left-10 top-16 hidden opacity-55 md:block" dark />
       <CloudCluster className="-right-12 bottom-12 hidden scale-75 opacity-45 lg:block" dark />
       <SectionWrapper id="contact" className="py-20 md:py-28">
-        <div className="relative overflow-hidden rounded-[2rem] border border-white/15 bg-white/[0.035] px-6 py-14 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_30px_90px_rgba(5,12,15,0.22)] backdrop-blur-sm md:px-14 md:py-20">
+        <div className="relative overflow-hidden rounded-[2rem] border border-white/15 bg-white/[0.055] px-6 py-14 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_30px_90px_rgba(5,12,15,0.22)] md:px-14 md:py-20">
           <FogAtmosphere className="inset-0" variant="dark" subtle />
           <div className="relative z-10">
             <p className="text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-white/50">05 / Start a conversation</p>

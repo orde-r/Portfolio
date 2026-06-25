@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Download, Menu, X } from "lucide-react";
 import { cn } from "../lib/utils";
 
@@ -14,30 +14,60 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const isScrolledRef = useRef(false);
+  const activeSectionRef = useRef("");
 
   useEffect(() => {
+    let frameId = 0;
+
     const updateHeader = () => {
-      setIsScrolled(window.scrollY > 12);
+      frameId = 0;
+
+      const nextIsScrolled = window.scrollY > 12;
+      if (isScrolledRef.current !== nextIsScrolled) {
+        isScrolledRef.current = nextIsScrolled;
+        setIsScrolled(nextIsScrolled);
+      }
+
       if (window.scrollY < window.innerHeight * 0.5) {
-        setActiveSection("");
+        if (activeSectionRef.current !== "") {
+          activeSectionRef.current = "";
+          setActiveSection("");
+        }
       }
     };
+
+    const scheduleHeaderUpdate = () => {
+      if (frameId !== 0) return;
+      frameId = window.requestAnimationFrame(updateHeader);
+    };
+
     updateHeader();
-    window.addEventListener("scroll", updateHeader, { passive: true });
-    return () => window.removeEventListener("scroll", updateHeader);
+    window.addEventListener("scroll", scheduleHeaderUpdate, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", scheduleHeaderUpdate);
+      if (frameId !== 0) window.cancelAnimationFrame(frameId);
+    };
   }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (window.scrollY < window.innerHeight * 0.5) {
-          setActiveSection("");
+          if (activeSectionRef.current !== "") {
+            activeSectionRef.current = "";
+            setActiveSection("");
+          }
           return;
         }
         const visible = entries
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActiveSection(visible.target.id);
+        if (visible && activeSectionRef.current !== visible.target.id) {
+          activeSectionRef.current = visible.target.id;
+          setActiveSection(visible.target.id);
+        }
       },
       { rootMargin: "-30% 0px -60%", threshold: [0, 0.2, 0.5] },
     );
@@ -63,7 +93,7 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-[100] border-b transition-[background-color,border-color,box-shadow] duration-300",
         isScrolled || isOpen
-          ? "border-[var(--glass-border)] bg-[var(--nav-surface)] shadow-[0_10px_38px_rgba(43,48,52,0.09)] backdrop-blur-2xl"
+          ? "border-[var(--glass-border)] bg-[var(--nav-surface-strong)] shadow-[0_10px_38px_rgba(43,48,52,0.09)]"
           : "border-transparent bg-transparent",
       )}
     >
@@ -101,7 +131,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className="interactive-button grid h-11 w-11 place-items-center rounded-full border border-[var(--glass-border)] bg-[var(--glass)] text-[var(--text-main)] shadow-sm backdrop-blur-xl hover:border-[var(--border-strong)] hover:bg-[var(--glass-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)] md:hidden"
+          className="interactive-button grid h-11 w-11 place-items-center rounded-full border border-[var(--glass-border)] bg-[var(--glass)] text-[var(--text-main)] shadow-sm hover:border-[var(--border-strong)] hover:bg-[var(--glass-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)] md:hidden"
           aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-controls="mobile-navigation"
           aria-expanded={isOpen}
@@ -114,7 +144,7 @@ export function Navbar() {
       <div
         id="mobile-navigation"
         className={cn(
-          "grid overflow-hidden border-t border-[var(--glass-border)] bg-[var(--nav-surface-strong)] backdrop-blur-2xl transition-[grid-template-rows] duration-300 md:hidden",
+          "grid overflow-hidden border-t border-[var(--glass-border)] bg-[var(--nav-surface-strong)] transition-[grid-template-rows] duration-300 md:hidden",
           isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
         )}
       >

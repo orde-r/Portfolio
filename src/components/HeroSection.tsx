@@ -24,7 +24,7 @@ export function HeroSection() {
         animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div className="mx-auto mb-8 flex w-fit max-w-full items-center justify-center gap-3 rounded-full border border-[var(--glass-border)] bg-[var(--glass)] px-3.5 py-2.5 text-[0.58rem] font-semibold uppercase tracking-[0.17em] text-[var(--text-muted)] shadow-sm backdrop-blur-xl sm:px-4 sm:text-[0.63rem] sm:tracking-[0.2em] md:mb-10">
+        <div className="mx-auto mb-8 flex w-fit max-w-full items-center justify-center gap-3 rounded-full border border-[var(--glass-border)] bg-[var(--glass)] px-3.5 py-2.5 text-[0.58rem] font-semibold uppercase tracking-[0.17em] text-[var(--text-muted)] shadow-sm sm:px-4 sm:text-[0.63rem] sm:tracking-[0.2em] md:mb-10">
           <span className="h-1.5 w-1.5 rounded-full bg-[var(--text-soft)] shadow-[0_0_0_4px_rgba(80,87,91,0.18)]" aria-hidden="true" />
           <p>Danielson&nbsp; / &nbsp;Software Engineer</p>
         </div>
