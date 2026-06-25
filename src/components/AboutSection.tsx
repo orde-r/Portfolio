@@ -4,7 +4,7 @@ import { SectionWrapper } from "./SectionWrapper";
 
 const facts = [
   ["Focus", "Web, mobile & backend"],
-  ["Education", "B.Comp.Sc. · 2024—Present"],
+  ["Education", "Computer Science - Software Engineering"],
   ["Current GPA", "3.96 / 4.00"],
   ["Based in", "Tangerang, Indonesia"],
 ];
