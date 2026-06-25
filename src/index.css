@@ -556,6 +556,10 @@ a {
 
 
 @media (max-width: 767px) {
+  .cloud-opening {
+    display: none;
+  }
+
   .fog-bank {
     filter: blur(14px);
   }
