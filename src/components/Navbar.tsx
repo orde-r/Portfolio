@@ -120,8 +120,8 @@ export function Navbar() {
             </a>
           ))}
           <a
-            href="/cv.md"
-            download="Danielson-CV.md"
+            href="/main.pdf"
+            download="Danielson-cv.pdf"
             className="interactive-button inline-flex min-h-10 items-center gap-2 rounded-full bg-[var(--deep)] px-4 py-2 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(27,39,44,0.16)] hover:bg-[var(--deep-soft)] hover:shadow-[0_12px_30px_rgba(27,39,44,0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)] focus-visible:ring-offset-4"
           >
             <Download size={14} />
@@ -161,8 +161,8 @@ export function Navbar() {
               </a>
             ))}
             <a
-              href="/cv.md"
-              download="Danielson-CV.md"
+              href="/main.pdf"
+              download="Danielson-cv.pdf"
               onClick={() => setIsOpen(false)}
               className="interactive-button my-3 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[var(--deep)] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[var(--deep-soft)] hover:shadow-[0_12px_30px_rgba(27,39,44,0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)]"
             >

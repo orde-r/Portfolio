@@ -26,8 +26,8 @@ export function ContactSection() {
                 <Mail size={15} /> Email me <ArrowUpRight size={14} />
               </Button>
               <Button
-                href="/cv.md"
-                download="Danielson-CV.md"
+                href="/main.pdf"
+                download="Danielson-CV.pdf"
                 variant="secondary"
                 className="border-white/25 bg-transparent text-white hover:border-white hover:bg-white/10"
               >

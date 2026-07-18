@@ -27,7 +27,7 @@ export function AboutSection() {
             My work spans React and TypeScript interfaces, Flutter mobile products, and Express APIs backed by practical database design. Clean structure matters because it keeps teams moving and products maintainable.
           </p>
           <a
-            href="/cv.md"
+            href="/main.pdf"
             target="_blank"
             className="group inline-flex items-center gap-2 border-b border-[var(--deep)] pb-1 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)]"
           >
