@@ -3,7 +3,7 @@ import { ArrowUp } from "lucide-react";
 export function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[var(--storm)] text-white">
-      <div className="mx-auto flex max-w-6xl flex-col gap-5 px-6 py-7 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto flex max-w-6xl flex-col gap-5 px-6 py-7 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between">
         <p>Built by Danielson · {new Date().getFullYear()}</p>
         <p className="hidden md:block">Clear systems. Thoughtful products.</p>
         <a

@@ -147,6 +147,7 @@ export function Navbar() {
         className={cn(
           "grid overflow-hidden border-t border-[var(--glass-border)] bg-[var(--nav-surface-strong)] transition-[grid-template-rows] duration-300 md:hidden",
           isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+          isOpen ? "visible" : "invisible",
         )}
       >
         <div className="min-h-0">

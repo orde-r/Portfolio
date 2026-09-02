@@ -1,4 +1,4 @@
-import type { Experience } from "../data/experience";
+import type { Experience, ExperienceSub } from "../data/experience";
 
 type ExperienceCardProps = {
   experience: Experience;
@@ -16,7 +16,25 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
         <h3 className="mt-1 text-2xl font-semibold tracking-[-0.035em] md:text-3xl">{experience.title}</h3>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--text-muted)] md:text-base md:leading-7">{experience.description}</p>
         {experience.details && <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--text-soft)]">{experience.details}</p>}
+        {experience.sub && experience.sub.length > 0 && (
+          <div className="mt-5 space-y-4">
+            {experience.sub.map((sub) => (
+              <ExperienceSubItem key={sub.title} sub={sub} />
+            ))}
+          </div>
+        )}
       </div>
     </article>
+  );
+}
+
+function ExperienceSubItem({ sub }: { sub: ExperienceSub }) {
+  return (
+    <div className="relative rounded-2xl border border-[var(--border)] bg-[var(--surface)]/80 px-5 py-4">
+      <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[var(--text-soft)]">{sub.role}</p>
+      <h4 className="mt-0.5 text-lg font-semibold tracking-[-0.02em] text-[var(--text-main)]">{sub.title}</h4>
+      <p className="mt-2 text-sm leading-6 text-[var(--text-muted)]">{sub.description}</p>
+      {sub.details && <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">{sub.details}</p>}
+    </div>
   );
 }

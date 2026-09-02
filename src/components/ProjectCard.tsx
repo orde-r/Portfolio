@@ -9,10 +9,11 @@ type ProjectCardProps = {
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <article
-      className="cloud-card interactive-card project-card group flex h-full flex-col border border-[var(--glass-border)] bg-[var(--surface)] p-6 md:p-7"
+      className="cloud-card interactive-card project-card group relative flex h-full flex-col border border-[var(--glass-border)] p-6 md:p-7"
     >
+      {/* <span aria-hidden="true" className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-[var(--deep)]/40 to-transparent" /> */}
       <div className="flex items-start justify-between">
-        <span className="font-mono text-xs text-[var(--text-soft)]">{project.number}</span>
+        <span className="grid h-8 w-8 place-items-center rounded-full border border-[var(--border)] bg-[var(--glass)] font-mono text-xs font-semibold text-[var(--deep-soft)] shadow-[inset_0_1px_0_rgba(255,255,255,0.5)]">{project.number}</span>
         <a
           href={project.github}
           target="_blank"
@@ -30,8 +31,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <p className="mt-4 min-h-20 text-sm leading-6 text-[var(--text-muted)]">{project.description}</p>
       </div>
 
-      <div className="my-6 h-px bg-[var(--border)]">
-        <span className="block h-px w-9 bg-[var(--deep)] transition-all duration-500 group-hover:w-20" />
+      <div className="my-6 h-px bg-gradient-to-r from-[var(--deep)]/20 via-[var(--border)] to-[var(--border)]">
+        <span className="block h-px w-9 bg-[var(--deep)] shadow-[0_0_10px_rgba(36,59,70,0.5)] transition-all duration-500 group-hover:w-full" />
       </div>
 
       <dl className="space-y-5 text-sm">

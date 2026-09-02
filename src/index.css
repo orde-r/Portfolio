@@ -11,8 +11,8 @@
   --surface-solid: #e7f0f3;
   --surface-muted: rgb(195 213 221 / 0.78);
   --text-main: #1d2c34;
-  --text-muted: #536b77;
-  --text-soft: #718691;
+  --text-muted: #4d6471;
+  --text-soft: #5a707d;
   --border: rgb(68 93 105 / 0.2);
   --border-strong: rgb(47 73 85 / 0.34);
   --deep: #243b46;
@@ -436,7 +436,7 @@ a {
   z-index: 0;
   inset: 0.4rem;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgb(255 255 255 / 0.18), transparent 42%);
+  background: linear-gradient(135deg, rgb(255 255 255 / 0.24), transparent 46%);
   pointer-events: none;
 }
 
@@ -483,7 +483,10 @@ a {
 
   .interactive-card.cloud-card:hover {
     border-color: var(--border-strong);
-    box-shadow: 0 26px 64px rgb(39 44 48 / 0.16), inset 0 1px 0 rgb(235 236 236 / 0.42);
+    box-shadow:
+      0 30px 70px rgb(39 44 48 / 0.18),
+      inset 0 1px 0 rgb(255 255 255 / 0.6),
+      inset 0 -1px 0 rgb(115 140 150 / 0.1);
   }
 }
 
@@ -494,8 +497,14 @@ a {
 }
 
 .project-card {
-  background: linear-gradient(145deg, rgb(232 241 244 / 0.8), rgb(219 232 237 / 0.62));
-  box-shadow: 0 12px 42px rgb(50 55 59 / 0.09), inset 0 1px 0 rgb(255 255 255 / 0.58);
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgb(255 255 255 / 0.5), transparent 52%),
+    linear-gradient(150deg, rgb(238 245 247 / 0.92) 0%, rgb(224 236 240 / 0.78) 46%, rgb(203 220 226 / 0.6) 100%);
+  box-shadow:
+    0 14px 44px rgb(50 55 59 / 0.1),
+    inset 0 1px 0 rgb(255 255 255 / 0.72),
+    inset 0 -1px 0 rgb(115 140 150 / 0.08);
+  border-color: var(--glass-border);
 }
 
 @keyframes fog-drift-right {
