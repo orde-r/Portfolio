@@ -100,10 +100,11 @@ export function Navbar() {
       <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between px-6">
         <a
           href="#top"
-          className="brand-cloud inline-flex items-center px-2 py-3 text-base font-semibold tracking-[-0.02em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
+          className="brand inline-flex items-center px-2 py-3 text-lg font-semibold tracking-[-0.02em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
           onClick={() => setIsOpen(false)}
         >
-          <span className="brand-cloud-name relative z-10">Danielson</span>
+          <span className="brand-name">Danielson</span>
+          <span className="brand-mark">.</span>
         </a>
 
         <div className="hidden items-center gap-6 md:flex">

@@ -8,10 +8,10 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
-    period: "2024 — Present",
+    period: "Dec 2024 — Present",
     title: "KMBD",
-    role: "Student Organization Staff",
-    description: "Supporting event execution, team coordination, and operational activities at BINUS University.",
+    role: "Staff & Division Treasurer",
+    description: "Supporting event execution, team coordination, and operational activities at BINUS University, while tracking divisional expenses and budgets.",
     details: "Built practical experience in communication, responsibility, adaptability, and working across committees.",
   },
   {

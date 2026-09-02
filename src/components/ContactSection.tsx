@@ -6,7 +6,7 @@ import { SectionWrapper } from "./SectionWrapper";
 
 export function ContactSection() {
   return (
-    <div className="relative overflow-hidden bg-[var(--storm)] text-white">
+    <div className="relative overflow-hidden bg-[var(--storm)] text-white py-8">
       <FogAtmosphere className="inset-0" variant="dark" />
       <CloudCluster className="-left-10 top-16 hidden opacity-55 md:block" dark />
       <CloudCluster className="-right-12 bottom-12 hidden scale-75 opacity-45 lg:block" dark />
