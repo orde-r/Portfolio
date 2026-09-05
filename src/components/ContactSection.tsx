@@ -22,7 +22,7 @@ export function ContactSection() {
               I’m open to Software Engineer Internship opportunities across web, mobile, and backend engineering. Let’s build something clear, dependable, and worth using.
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
-              <Button href="mailto:danielsonhong@gmail.com" className="bg-white text-[var(--deep)] hover:bg-white/85">
+              <Button href="mailto:danielsonang23@gmail.com" className="bg-white text-[var(--deep)] hover:bg-white/85">
                 <Mail size={15} /> Email me <ArrowUpRight size={14} />
               </Button>
               <Button
