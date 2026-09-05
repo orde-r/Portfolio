@@ -20,7 +20,7 @@ export const projects: Project[] = [
     solution: "A clear role-aware interface that carries each order from authentication through fulfillment.",
     built: "Responsive product screens, API integration, authentication, order details, and real-time status synchronization.",
     tech: ["React", "TypeScript", "Tailwind", "REST API", "Socket.io"],
-    github: "https://github.com/orde-r/BeeTip",
+    github: "https://koinku.my.id",
   },
   {
     number: "02",
