@@ -6,22 +6,18 @@ type SectionHeadingProps = {
 
 export function SectionHeading({ eyebrow, title, description }: SectionHeadingProps) {
   return (
-    <header className="mb-10 grid gap-5 border-t border-[var(--border)] pt-5 md:mb-14 md:grid-cols-[0.8fr_2fr] md:gap-12">
-      {eyebrow && (
-        <p className="w-fit self-start rounded-full border border-[var(--glass-border)] bg-[var(--glass)] px-3 py-2 text-[0.62rem] font-semibold uppercase tracking-[0.19em] text-[var(--text-muted)] shadow-sm">
-          {eyebrow}
+    <header className="mb-10 md:mb-12">
+      <h2 className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-2xl font-semibold tracking-[-0.03em] text-[var(--text-main)] md:text-3xl">
+        {eyebrow && (
+          <span className="font-mono text-base font-medium text-[var(--accent)] md:text-lg">{eyebrow}</span>
+        )}
+        {title}
+      </h2>
+      {description && (
+        <p className="mt-3 max-w-xl text-[0.95rem] leading-7 text-[var(--text-muted)] md:text-base">
+          {description}
         </p>
       )}
-      <div>
-        <h2 className="text-balance text-4xl font-semibold tracking-[-0.045em] text-[var(--text-main)] md:text-6xl">
-          {title}
-        </h2>
-        {description && (
-          <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--text-muted)] md:text-lg">
-            {description}
-          </p>
-        )}
-      </div>
     </header>
   );
 }

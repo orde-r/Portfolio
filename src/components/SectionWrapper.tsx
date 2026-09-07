@@ -14,7 +14,7 @@ export function SectionWrapper({ id, children, className }: SectionWrapperProps)
   return (
     <motion.section
       id={id}
-      className={cn("relative mx-auto max-w-6xl scroll-mt-20 px-6 py-16 md:py-24", className)}
+      className={cn("relative mx-auto w-full max-w-4xl scroll-mt-20 px-6 py-14 md:px-8 md:py-20 lg:scroll-mt-0", className)}
       initial={reduceMotion ? false : { opacity: 0, y: 22 }}
       whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.12 }}

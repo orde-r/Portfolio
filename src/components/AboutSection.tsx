@@ -1,55 +1,54 @@
 import { ArrowUpRight } from "lucide-react";
+import { Ambient } from "./Ambient";
+import { CloudCluster } from "./CloudCluster";
 import { SectionHeading } from "./SectionHeading";
 import { SectionWrapper } from "./SectionWrapper";
 
-const facts = [
-  ["Focus", "Web, mobile & backend"],
-  ["Education", "Computer Science - Software Engineering"],
-  ["Current GPA", "3.96 / 4.00"],
-  ["Based in", "Tangerang, Indonesia"],
+const highlights = [
+  "GPA 3.96 / 4.00",
+  "Dean's List",
+  "S-Class 2025 — Excellence Program",
+  "Semifinalist — elevAIte x Microsoft Hackathon 2025",
 ];
 
 export function AboutSection() {
   return (
-    <SectionWrapper id="about">
-      <SectionHeading
-        eyebrow="01 / About"
-        title="Engineering with the whole product in view."
-        description="I care about what a product helps someone accomplish—not only how its code is written."
-      />
+    <div className="relative overflow-hidden">
+      <Ambient stars={8} fireflies={2} />
+      <CloudCluster className="-right-16 top-8 hidden scale-50 opacity-40 lg:block" />
+      <SectionWrapper id="about">
+        <SectionHeading eyebrow="01." title="About" />
 
-      <div className="grid gap-8 md:grid-cols-[1.4fr_0.8fr] md:gap-14">
-        <div className="space-y-6 text-xl leading-9 tracking-[-0.02em] text-[var(--text-main)] md:text-2xl md:leading-10">
+        <div className="max-w-2xl space-y-5 text-[0.95rem] leading-7 text-[var(--text-muted)] md:text-base md:leading-8">
           <p>
-            I’m a Computer Science student focused on web development, mobile applications, and backend engineering. I enjoy carrying an idea from interface decisions to the systems behind it.
+            Hi! I’m Danielson, a Computer Science student at Bina Nusantara University who enjoys turning product ideas into dependable software — from React and TypeScript interfaces to Flutter apps and Express APIs.
           </p>
-          <p className="text-[var(--text-muted)]">
-            My work spans React and TypeScript interfaces, Flutter mobile products, and Express APIs backed by practical database design. Clean structure matters because it keeps teams moving and products maintainable.
+          <p>
+            Most of my time goes into frontend work: reusable design systems, clean component structure, and the small details that make a product feel finished. I care about shipping software that is clear, maintainable, and genuinely useful to the people using it.
           </p>
-          <a
-            href="/main.pdf"
-            target="_blank"
-            className="group inline-flex items-center gap-2 border-b border-[var(--deep)] pb-1 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--deep)]"
-          >
-            Read full CV
-            <ArrowUpRight size={15} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </a>
+          <p>
+            Outside of code, I serve as Staff &amp; Division Treasurer at KMBD BINUS University, where event committees taught me a lot about coordination, communication, and responsibility.
+          </p>
         </div>
 
-        <aside>
-          <div className="cloud-card glass-surface interactive-card p-8 md:p-10">
-            <p className="mb-6 text-[0.67rem] font-semibold uppercase tracking-[0.2em] text-[var(--text-soft)]">At a glance</p>
-            <dl>
-              {facts.map(([label, value]) => (
-                <div key={label} className="grid grid-cols-[0.8fr_1.2fr] gap-4 border-t border-[var(--border)] py-4 first:border-t-0 first:pt-0">
-                  <dt className="text-xs text-[var(--text-soft)]">{label}</dt>
-                  <dd className="text-sm font-medium text-[var(--text-main)]">{value}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </aside>
-      </div>
-    </SectionWrapper>
+        <div className="mt-8 grid max-w-2xl gap-x-8 gap-y-3 sm:grid-cols-2">
+          {highlights.map((highlight) => (
+            <div key={highlight} className="flex items-center gap-2.5">
+              <span className="h-1.5 w-1.5 flex-none rounded-full bg-[var(--accent)] shadow-[0_0_0.5rem_rgb(211_230_250/0.5)]" aria-hidden="true" />
+              <span className="text-[0.85rem] leading-6 text-[var(--text-muted)]">{highlight}</span>
+            </div>
+          ))}
+        </div>
+
+        <a
+          href="/main.pdf"
+          target="_blank"
+          className="group mt-8 inline-flex items-center gap-2 text-sm font-medium text-[var(--accent-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+        >
+          <span className="font-mono">Read full CV</span>
+          <ArrowUpRight size={15} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+        </a>
+      </SectionWrapper>
+    </div>
   );
 }
