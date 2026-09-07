@@ -4,7 +4,7 @@ import { SectionWrapper } from "./SectionWrapper";
 
 export function ContactSection() {
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative">
       <Ambient stars={12} fireflies={4} />
       <SectionWrapper id="contact" className="pb-24 md:pb-32">
         <p className="font-mono text-sm tracking-[0.08em] text-[var(--accent)]">

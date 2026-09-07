@@ -7,7 +7,7 @@ import { SectionWrapper } from "./SectionWrapper";
 
 export function ExperienceSection() {
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative">
       <Ambient stars={6} fireflies={2} />
       <CloudCluster className="-right-12 bottom-10 hidden scale-50 opacity-40 lg:block" />
       <SectionWrapper id="experience">

@@ -10,7 +10,7 @@ export function HeroSection() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[100svh] items-center overflow-hidden pb-24 pt-32 md:pt-28"
+      className="relative flex min-h-[100svh] items-center pb-24 pt-32 md:pt-28"
     >
       <Moon className="right-[8%] top-[10%] h-24 w-24 md:right-[14%] md:top-[14%] md:h-32 md:w-32 lg:right-[16%]" />
       <div

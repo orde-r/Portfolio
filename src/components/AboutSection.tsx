@@ -13,7 +13,7 @@ const highlights = [
 
 export function AboutSection() {
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative">
       <Ambient stars={8} fireflies={2} />
       <CloudCluster className="-right-16 top-8 hidden scale-50 opacity-40 lg:block" />
       <SectionWrapper id="about">

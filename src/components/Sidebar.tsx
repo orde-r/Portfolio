@@ -130,7 +130,7 @@ export function Sidebar() {
   return (
     <>
       {/* Desktop sticky panel */}
-      <aside className="sticky top-0 z-40 hidden h-svh w-[19.5rem] shrink-0 flex-col justify-between self-start overflow-hidden border-r border-[var(--border)] bg-[var(--panel)] px-6 py-8 backdrop-blur-xl lg:flex xl:w-[21rem] xl:px-8">
+      <aside className="sticky top-0 z-40 hidden h-svh w-[19.5rem] shrink-0 flex-col justify-between self-start py-8 pl-12 pr-6 lg:flex xl:w-[21rem] xl:pl-16 xl:pr-8">
         <div aria-hidden="true" className="pointer-events-none absolute -left-16 top-24 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgb(160_200_245/0.12),transparent_70%)] blur-2xl" />
         <Ambient stars={10} fireflies={2} />
         <CloudDrift />
@@ -236,11 +236,12 @@ export function Sidebar() {
 
 function CloudDrift() {
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute -left-14 top-1/3 w-56">
-      <div className="cloud-cluster-static relative h-20 w-56">
-        <span className="absolute left-2 bottom-3 h-8 w-20 rounded-full bg-[linear-gradient(150deg,rgb(150_176_208/0.2),rgb(60_84_114/0.24))]" />
-        <span className="absolute left-16 top-1 h-12 w-24 rounded-full bg-[linear-gradient(150deg,rgb(170_196_226/0.24),rgb(64_90_120/0.26))]" />
-        <span className="absolute left-36 bottom-1 h-9 w-16 rounded-full bg-[linear-gradient(150deg,rgb(140_168_200/0.2),rgb(52_76_104/0.24))]" />
+    <div aria-hidden="true" className="pointer-events-none absolute -left-10 bottom-[12%] w-72">
+      <div className="cloud-cluster-static relative h-24 w-72">
+        <span className="absolute bottom-3 left-2 h-9 w-24 rounded-full bg-[linear-gradient(150deg,rgb(150_176_208/0.2),rgb(60_84_114/0.24))]" />
+        <span className="absolute left-20 top-0 h-14 w-28 rounded-full bg-[linear-gradient(150deg,rgb(170_196_226/0.24),rgb(64_90_120/0.26))]" />
+        <span className="absolute bottom-1 left-40 h-10 w-20 rounded-full bg-[linear-gradient(150deg,rgb(140_168_200/0.2),rgb(52_76_104/0.24))]" />
+        <span className="absolute bottom-4 right-0 h-9 w-24 rounded-full bg-[linear-gradient(150deg,rgb(150_176_208/0.2),rgb(60_84_114/0.24))]" />
       </div>
     </div>
   );
