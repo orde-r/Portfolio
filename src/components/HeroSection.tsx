@@ -50,11 +50,6 @@ export function HeroSection() {
             <Em>frontend work</Em> — reusable design systems, clean components, and the small
             details that make a product feel finished.
           </p>
-          <p>
-            Outside of code, I serve as <Em>Staff &amp; Division Treasurer</Em> at{" "}
-            <Em>KMBD BINUS University</Em>, where event committees taught me a lot about
-            coordination, communication, and responsibility.
-          </p>
         </div>
 
         <div className="mt-4 grid max-w-2xl gap-x-4 gap-y-2 sm:grid-cols-2">
