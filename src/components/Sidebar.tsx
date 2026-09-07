@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { Download, Github, Instagram, Linkedin, Mail, Menu, Moon, X } from "lucide-react";
+import { Github, Instagram, Linkedin, Mail, Menu, X } from "lucide-react";
 import { Ambient } from "./Ambient";
 import { cn } from "../lib/utils";
 
 const links = [
-  { label: "About", href: "#about", id: "about" },
   { label: "Projects", href: "#projects", id: "projects" },
   { label: "Skills", href: "#skills", id: "skills" },
   { label: "Experience", href: "#experience", id: "experience" },
@@ -68,26 +67,9 @@ function Brand() {
       href="#top"
       className="group inline-flex items-center gap-2.5 px-1 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
     >
-      <span className="grid h-9 w-9 place-items-center rounded-full border border-[var(--glass-border)] bg-[var(--glass)] text-[var(--accent-strong)] shadow-[inset_0_1px_0_rgb(226_240_255/0.14)] transition-transform duration-300 group-hover:-translate-y-0.5">
-        <Moon size={16} />
-      </span>
-      <span className="text-xl font-semibold tracking-[-0.02em] text-[var(--text-main)]">
+      <span className="text-[2rem] font-semibold tracking-[-0.02em] text-[var(--text-main)]">
         Danielson<span className="text-[var(--accent)]">.</span>
       </span>
-    </a>
-  );
-}
-
-function CvButton({ onClick }: { onClick?: () => void }) {
-  return (
-    <a
-      href="/CV_Danielson.pdf"
-      download="CV_Danielson.pdf"
-      onClick={onClick}
-      className="interactive-button inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[var(--accent-strong)] px-5 py-2.5 text-sm font-semibold text-[var(--ink)] shadow-[0_10px_30px_rgb(150_190_235/0.18)] hover:bg-white hover:shadow-[0_14px_38px_rgb(170_205_245/0.26)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-    >
-      <Download size={15} />
-      Download CV
     </a>
   );
 }
@@ -130,15 +112,20 @@ export function Sidebar() {
   return (
     <>
       {/* Desktop sticky panel */}
-      <aside className="sticky top-0 z-40 hidden h-svh w-[19.5rem] shrink-0 flex-col justify-between self-start py-8 pl-12 pr-6 lg:flex xl:w-[21rem] xl:pl-16 xl:pr-8">
+      <aside
+        className="sticky top-0 z-40 hidden h-svh w-[calc(16.5rem+max(2rem,(100%_-_68.5rem)/3))] shrink-0 flex-col justify-between self-start py-24 pl-[max(2rem,(100%_-_68.5rem)/3)] pr-6 lg:flex"
+      >
         <div aria-hidden="true" className="pointer-events-none absolute -left-16 top-24 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgb(160_200_245/0.12),transparent_70%)] blur-2xl" />
         <Ambient stars={10} fireflies={2} />
         <CloudDrift />
 
         <div className="relative">
           <Brand />
-          <p className="mt-5 px-1 text-[0.95rem] leading-7 text-[var(--text-muted)]">
-            Software engineer crafting dependable web, mobile &amp; backend products.
+          <p className="mt-1 px-1 text-[1.2rem] font-semibold leading-3 text-[var(--text-main)]">
+            Software Engineer
+          </p>
+          <p className="mt-1.5 px-1 text-[0.95rem] leading-7 text-[var(--text-muted)]">
+            crafting dependable web, mobile &amp; backend products.
           </p>
         </div>
 
@@ -148,20 +135,19 @@ export function Sidebar() {
               key={link.id}
               href={link.href}
               className={cn(
-                "side-link font-mono text-[0.92rem] uppercase tracking-[0.16em]",
+                "side-link font-mono text-[1.02rem] uppercase tracking-[0.16em]",
                 activeSection === link.id && "is-active",
               )}
             >
               <span className="side-dot" aria-hidden="true" />
-              <span className="text-[0.68rem] text-[var(--text-soft)]">{String(index + 1).padStart(2, "0")}</span>
+              <span className="text-[0.78rem] text-[var(--text-muted)]">{String(index + 1).padStart(2, "0")}</span>
               {link.label}
             </a>
           ))}
         </nav>
 
         <div className="relative flex flex-col gap-5">
-          <CvButton />
-          <div className="flex items-center gap-2 border-t border-[var(--border)] pt-5">
+          <div className="flex items-center gap-2">
             {socials.map(({ label, href, icon: Icon }) => (
               <a
                 key={label}
@@ -169,14 +155,11 @@ export function Sidebar() {
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel={href.startsWith("http") ? "noreferrer" : undefined}
                 aria-label={label}
-                className="interactive-button grid h-11 w-11 place-items-center rounded-full border border-[var(--border)] bg-[var(--glass)] text-[var(--text-muted)] hover:border-[var(--border-strong)] hover:bg-[var(--glass-strong)] hover:text-[var(--text-main)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                className="interactive-button grid h-12 w-12 place-items-center rounded-full border border-[var(--glass-border)] bg-transparent text-[var(--text-muted)] hover:border-[var(--border-strong)] hover:bg-[var(--glass)] hover:text-[var(--text-main)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
               >
-                <Icon size={17} />
+                <Icon size={19} />
               </a>
             ))}
-            <span className="ml-auto text-[0.65rem] text-[var(--text-soft)]">
-              &copy; {new Date().getFullYear()}
-            </span>
           </div>
         </div>
       </aside>
@@ -223,9 +206,6 @@ export function Sidebar() {
                   {link.label}
                 </a>
               ))}
-              <div className="my-4">
-                <CvButton onClick={() => setIsOpen(false)} />
-              </div>
             </div>
           </div>
         </div>
@@ -236,8 +216,8 @@ export function Sidebar() {
 
 function CloudDrift() {
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute -left-10 bottom-[12%] w-72">
-      <div className="cloud-cluster-static relative h-24 w-72">
+    <div aria-hidden="true" className="pointer-events-none absolute right-0 top-1 w-80">
+      <div className="cloud-cluster-static relative h-24 w-80">
         <span className="absolute bottom-3 left-2 h-9 w-24 rounded-full bg-[linear-gradient(150deg,rgb(150_176_208/0.2),rgb(60_84_114/0.24))]" />
         <span className="absolute left-20 top-0 h-14 w-28 rounded-full bg-[linear-gradient(150deg,rgb(170_196_226/0.24),rgb(64_90_120/0.26))]" />
         <span className="absolute bottom-1 left-40 h-10 w-20 rounded-full bg-[linear-gradient(150deg,rgb(140_168_200/0.2),rgb(52_76_104/0.24))]" />

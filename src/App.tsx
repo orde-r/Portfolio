@@ -1,4 +1,3 @@
-import { AboutSection } from "./components/AboutSection";
 import { BackToTop } from "./components/BackToTop";
 import { ContactSection } from "./components/ContactSection";
 import { CursorTrail } from "./components/CursorTrail";
@@ -19,7 +18,6 @@ function App() {
       <div className="relative z-10 min-w-0 flex-1">
         <main>
           <HeroSection />
-          <AboutSection />
           <ProjectsSection />
           <SkillsSection />
           <ExperienceSection />
