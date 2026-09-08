@@ -12,7 +12,7 @@ export function ProjectsSection() {
       <CloudCluster className="-left-16 bottom-6 hidden scale-75 opacity-60 lg:block" />
       <SectionWrapper id="projects">
         <SectionHeading
-          eyebrow="02."
+          eyebrow="01."
           title="Projects"
           description="Projects where I translated product problems into interfaces, integrations, and working application features."
         />

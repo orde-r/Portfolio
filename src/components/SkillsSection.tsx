@@ -11,7 +11,7 @@ export function SkillsSection() {
       <CloudCluster className="-right-16 top-1/3 hidden scale-75 opacity-50 lg:block" />
       <SectionWrapper id="skills">
         <SectionHeading
-          eyebrow="03."
+          eyebrow="02."
           title="Skills"
           description="A practical toolkit for building interfaces, APIs, and mobile experiences—and connecting them into a coherent product."
         />

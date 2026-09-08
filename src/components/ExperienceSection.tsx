@@ -12,7 +12,7 @@ export function ExperienceSection() {
       <CloudCluster className="-right-12 bottom-10 hidden scale-50 opacity-40 lg:block" />
       <SectionWrapper id="experience">
         <SectionHeading
-          eyebrow="04."
+          eyebrow="03."
           title="Beyond code"
           description="Organization and committee work that sharpened how I communicate, coordinate, and contribute inside a team."
         />
