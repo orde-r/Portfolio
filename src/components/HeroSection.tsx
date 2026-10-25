@@ -6,7 +6,7 @@ import { Moon } from "./Moon";
 
 const highlights = [
   { icon: GraduationCap, text: "GPA 3.96 / 4.00" },
-  { icon: Trophy, text: "Semifinalist — elevAIte x Microsoft Hackathon 2025" },
+  { icon: Trophy, text: "Semifinalist - elevAIte x Microsoft Hackathon 2025" },
 ];
 
 function Em({ children }: { children: React.ReactNode }) {
@@ -42,12 +42,12 @@ export function HeroSection() {
 
         <div className="mt-2 max-w-2xl space-y-5 text-[0.95rem] leading-7 text-[var(--text-muted)] md:text-base md:leading-8">
           <h1 className="font-normal">
-            <Em>Danielson</Em> — I’m a <Em>Computer Science student</Em> at{" "}
+            <Em>Danielson</Em> - I’m a <Em>Computer Science student</Em> at{" "}
             <Em>Bina Nusantara University</Em> who enjoys turning product ideas into dependable software.
           </h1>
           <p>
             <Em>I build software people can rely on.</Em> Most of my time goes into{" "}
-            <Em>frontend work</Em> — reusable design systems, clean components, and the small
+            <Em>frontend work</Em> - reusable design systems, clean components, and the small
             details that make a product feel finished.
           </p>
         </div>
