@@ -1,5 +1,7 @@
 import { Download, Mail } from "lucide-react";
+import { contact } from "../data/contact";
 import { Ambient } from "./Ambient";
+import { ButtonLink } from "./ButtonLink";
 import { SectionWrapper } from "./SectionWrapper";
 
 export function ContactSection() {
@@ -20,21 +22,14 @@ export function ContactSection() {
         </p>
 
         <div className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3">
-          <a
-            href="mailto:danielsonang23@gmail.com"
-            className="interactive-button inline-flex h-11 items-center gap-2 rounded-lg bg-[var(--accent-strong)] px-7 text-sm font-semibold text-[var(--ink)] shadow-[0_10px_30px_rgb(150_190_235/0.18)] hover:bg-white hover:shadow-[0_14px_38px_rgb(170_205_245/0.26)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-          >
+          <ButtonLink href={`mailto:${contact.email}`}>
             <Mail size={16} />
             Say hello
-          </a>
-          <a
-            href="/CV_Danielson.pdf"
-            download="CV_Danielson.pdf"
-            className="interactive-button inline-flex h-11 items-center gap-2.5 rounded-lg border border-[var(--accent)]/60 px-7 text-sm font-medium text-[var(--accent-strong)] hover:bg-[var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-          >
+          </ButtonLink>
+          <ButtonLink href={contact.cvUrl} download={contact.cvFileName} variant="secondary">
             <Download size={16} />
             Download CV
-          </a>
+          </ButtonLink>
         </div>
       </SectionWrapper>
     </div>

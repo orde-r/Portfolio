@@ -2,15 +2,11 @@ import { cn } from "../lib/utils";
 
 type CloudClusterProps = {
   className?: string;
-  dark?: boolean;
 };
 
-export function CloudCluster({ className, dark = false }: CloudClusterProps) {
+export function CloudCluster({ className }: CloudClusterProps) {
   return (
-    <div
-      aria-hidden="true"
-      className={cn("cloud-cluster", dark && "cloud-cluster-dark", className)}
-    >
+    <div aria-hidden="true" className={cn("cloud-cluster", className)}>
       <span className="cloud-body">
         <span className="cloud-shadow" />
         <span className="cloud-puff cloud-puff-one" />

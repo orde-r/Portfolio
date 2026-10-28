@@ -1,33 +1,11 @@
-import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
+import { useScrollState } from "../hooks/useScrollState";
 import { cn } from "../lib/utils";
 
+const isPastHalfViewport = () => window.scrollY > window.innerHeight * 0.5;
+
 export function BackToTop() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    let frameId = 0;
-
-    const update = () => {
-      frameId = 0;
-      setIsVisible(window.scrollY > window.innerHeight * 0.5);
-    };
-
-    const schedule = () => {
-      if (frameId !== 0) return;
-      frameId = window.requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
-      if (frameId !== 0) window.cancelAnimationFrame(frameId);
-    };
-  }, []);
+  const isVisible = useScrollState(isPastHalfViewport, false, { trackResize: true });
 
   return (
     <button

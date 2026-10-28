@@ -5,6 +5,17 @@ type ProjectEntryProps = {
   project: Project;
 };
 
+const caseStudy = (project: Project) => [
+  { label: "Problem", text: project.problem },
+  { label: "Response", text: project.solution },
+  { label: "Contribution", text: project.built },
+];
+
+const linkLabel = (project: Project) =>
+  new URL(project.url).hostname === "github.com"
+    ? `Open ${project.name} on GitHub`
+    : `Open the ${project.name} website`;
+
 export function ProjectEntry({ project }: ProjectEntryProps) {
   return (
     <article className="group relative">
@@ -24,10 +35,10 @@ export function ProjectEntry({ project }: ProjectEntryProps) {
             {project.name}
           </h3>
           <a
-            href={project.github}
+            href={project.url}
             target="_blank"
             rel="noreferrer"
-            aria-label={`Open ${project.name} on GitHub`}
+            aria-label={linkLabel(project)}
             className="inline-flex text-[var(--accent-strong)] transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
           >
             <ArrowUpRight
@@ -51,18 +62,12 @@ export function ProjectEntry({ project }: ProjectEntryProps) {
         </div>
 
         <dl className="mt-5 grid gap-x-8 gap-y-4 sm:grid-cols-3">
-          <div>
-            <dt className="font-mono text-[0.6rem] uppercase tracking-[0.16em] text-[var(--text-soft)]">Problem</dt>
-            <dd className="mt-1.5 text-[0.85rem] leading-6 text-[var(--text-muted)]">{project.problem}</dd>
-          </div>
-          <div>
-            <dt className="font-mono text-[0.6rem] uppercase tracking-[0.16em] text-[var(--text-soft)]">Response</dt>
-            <dd className="mt-1.5 text-[0.85rem] leading-6 text-[var(--text-muted)]">{project.solution}</dd>
-          </div>
-          <div>
-            <dt className="font-mono text-[0.6rem] uppercase tracking-[0.16em] text-[var(--text-soft)]">Contribution</dt>
-            <dd className="mt-1.5 text-[0.85rem] leading-6 text-[var(--text-muted)]">{project.built}</dd>
-          </div>
+          {caseStudy(project).map(({ label, text }) => (
+            <div key={label}>
+              <dt className="font-mono text-[0.6rem] uppercase tracking-[0.16em] text-[var(--text-soft)]">{label}</dt>
+              <dd className="mt-1.5 text-[0.85rem] leading-6 text-[var(--text-muted)]">{text}</dd>
+            </div>
+          ))}
         </dl>
       </div>
     </article>

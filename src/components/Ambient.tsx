@@ -1,11 +1,11 @@
-import { useMemo } from "react";
-import { cn } from "../lib/utils";
+import { useMemo, type CSSProperties } from "react";
 
 type AmbientProps = {
-  className?: string;
   stars?: number;
   fireflies?: number;
 };
+
+type Range = [min: number, max: number];
 
 type Particle = {
   left: string;
@@ -15,17 +15,31 @@ type Particle = {
   duration: string;
 };
 
-function makeParticle(sizeRange: [number, number], durationRange: [number, number]): Particle {
+const randomIn = ([min, max]: Range) => min + Math.random() * (max - min);
+
+function makeParticle(sizeRange: Range, durationRange: Range): Particle {
   return {
     left: `${(Math.random() * 100).toFixed(2)}%`,
     top: `${(Math.random() * 100).toFixed(2)}%`,
-    size: sizeRange[0] + Math.random() * (sizeRange[1] - sizeRange[0]),
+    size: randomIn(sizeRange),
     delay: `${(Math.random() * 8).toFixed(2)}s`,
-    duration: `${(durationRange[0] + Math.random() * (durationRange[1] - durationRange[0])).toFixed(2)}s`,
+    duration: `${randomIn(durationRange).toFixed(2)}s`,
   };
 }
 
-export function Ambient({ className, stars = 12, fireflies = 3 }: AmbientProps) {
+function particleStyle(particle: Particle): CSSProperties {
+  return {
+    left: particle.left,
+    top: particle.top,
+    width: particle.size,
+    height: particle.size,
+    animationDelay: particle.delay,
+    animationDuration: particle.duration,
+  };
+}
+
+/** Decorative twinkling stars and drifting fireflies at random positions inside the parent. */
+export function Ambient({ stars = 12, fireflies = 3 }: AmbientProps) {
   const starParticles = useMemo(
     () => Array.from({ length: stars }, () => makeParticle([1, 2.4], [2.5, 6])),
     [stars],
@@ -36,34 +50,12 @@ export function Ambient({ className, stars = 12, fireflies = 3 }: AmbientProps) 
   );
 
   return (
-    <div aria-hidden="true" className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)}>
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
       {starParticles.map((particle, index) => (
-        <span
-          key={`star-${index}`}
-          className="star-particle"
-          style={{
-            left: particle.left,
-            top: particle.top,
-            width: particle.size,
-            height: particle.size,
-            animationDelay: particle.delay,
-            animationDuration: particle.duration,
-          }}
-        />
+        <span key={`star-${index}`} className="star-particle" style={particleStyle(particle)} />
       ))}
       {flyParticles.map((particle, index) => (
-        <span
-          key={`fly-${index}`}
-          className="firefly"
-          style={{
-            left: particle.left,
-            top: particle.top,
-            width: particle.size,
-            height: particle.size,
-            animationDelay: particle.delay,
-            animationDuration: particle.duration,
-          }}
-        />
+        <span key={`fly-${index}`} className="firefly" style={particleStyle(particle)} />
       ))}
     </div>
   );

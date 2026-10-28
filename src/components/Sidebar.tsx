@@ -1,65 +1,42 @@
 import { useEffect, useState } from "react";
 import { Github, Instagram, Linkedin, Mail, Menu, X } from "lucide-react";
-import { Ambient } from "./Ambient";
+import { contact } from "../data/contact";
+import { useScrollState } from "../hooks/useScrollState";
 import { cn } from "../lib/utils";
+import { Ambient } from "./Ambient";
 
 const links = [
-  { label: "Projects", href: "#projects", id: "projects" },
-  { label: "Skills", href: "#skills", id: "skills" },
-  { label: "Experience", href: "#experience", id: "experience" },
-  { label: "Contact", href: "#contact", id: "contact" },
+  { label: "Projects", id: "projects" },
+  { label: "Skills", id: "skills" },
+  { label: "Experience", id: "experience" },
+  { label: "Contact", id: "contact" },
 ];
 
 const socials = [
   { label: "GitHub", href: "https://github.com/orde-r", icon: Github },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/danielsondanielson/", icon: Linkedin },
   { label: "Instagram", href: "https://www.instagram.com/dansooo._", icon: Instagram },
-  { label: "Email", href: "mailto:danielsonang23@gmail.com", icon: Mail },
+  { label: "Email", href: `mailto:${contact.email}`, icon: Mail },
 ];
 
-function useActiveSection() {
-  const [activeSection, setActiveSection] = useState("");
+/** Id of the nav section currently in view ("" above the first section). */
+function getActiveSectionId() {
+  const doc = document.documentElement;
+  const atBottom = window.innerHeight + window.scrollY >= doc.scrollHeight - 8;
+  if (atBottom) return links[links.length - 1].id;
 
-  useEffect(() => {
-    let frameId = 0;
-
-    const update = () => {
-      frameId = 0;
-      const doc = document.documentElement;
-      const atBottom = window.innerHeight + window.scrollY >= doc.scrollHeight - 8;
-      let current = "";
-      if (atBottom) {
-        current = links[links.length - 1].id;
-      } else {
-        const probe = window.innerHeight * 0.35;
-        for (const { id } of links) {
-          const el = document.getElementById(id);
-          if (!el) continue;
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= probe || rect.bottom <= window.innerHeight) current = id;
-        }
-      }
-      setActiveSection(current);
-    };
-
-    const schedule = () => {
-      if (frameId !== 0) return;
-      frameId = window.requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
-      if (frameId !== 0) window.cancelAnimationFrame(frameId);
-    };
-  }, []);
-
-  return activeSection;
+  const probe = window.innerHeight * 0.35;
+  let current = "";
+  for (const { id } of links) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+    const rect = el.getBoundingClientRect();
+    if (rect.top <= probe || rect.bottom <= window.innerHeight) current = id;
+  }
+  return current;
 }
+
+const isPageScrolled = () => window.scrollY > 12;
 
 function Brand() {
   return (
@@ -74,48 +51,42 @@ function Brand() {
   );
 }
 
+function CloudDrift() {
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute right-0 top-1 w-80">
+      <div className="relative h-24 w-80">
+        <span className="absolute bottom-3 left-2 h-9 w-24 rounded-full bg-[linear-gradient(150deg,rgb(150_176_208/0.2),rgb(60_84_114/0.24))]" />
+        <span className="absolute left-20 top-0 h-14 w-28 rounded-full bg-[linear-gradient(150deg,rgb(170_196_226/0.24),rgb(64_90_120/0.26))]" />
+        <span className="absolute bottom-1 left-40 h-10 w-20 rounded-full bg-[linear-gradient(150deg,rgb(140_168_200/0.2),rgb(52_76_104/0.24))]" />
+        <span className="absolute bottom-4 right-0 h-9 w-24 rounded-full bg-[linear-gradient(150deg,rgb(150_176_208/0.2),rgb(60_84_114/0.24))]" />
+      </div>
+    </div>
+  );
+}
+
 export function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const activeSection = useActiveSection();
+  const activeSection = useScrollState(getActiveSectionId, "", { trackResize: true });
+  const isScrolled = useScrollState(isPageScrolled, false);
 
   useEffect(() => {
+    // Matches Tailwind's `lg` breakpoint, where the mobile bar is hidden (`lg:hidden`).
+    const desktop = window.matchMedia("(min-width: 64rem)");
     const closeOnDesktop = () => {
-      if (window.innerWidth >= 768) setIsOpen(false);
+      if (desktop.matches) setIsOpen(false);
     };
-    window.addEventListener("resize", closeOnDesktop, { passive: true });
-    return () => window.removeEventListener("resize", closeOnDesktop);
-  }, []);
-
-  useEffect(() => {
-    let frameId = 0;
-
-    const update = () => {
-      frameId = 0;
-      setIsScrolled(window.scrollY > 12);
-    };
-
-    const schedule = () => {
-      if (frameId !== 0) return;
-      frameId = window.requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener("scroll", schedule, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", schedule);
-      if (frameId !== 0) window.cancelAnimationFrame(frameId);
-    };
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => desktop.removeEventListener("change", closeOnDesktop);
   }, []);
 
   return (
     <>
       {/* Desktop sticky panel */}
-      <aside
-        className="sticky top-0 z-40 hidden h-svh w-[calc(16.5rem+max(2rem,(100%_-_68.5rem)/3))] shrink-0 flex-col justify-between self-start py-24 pl-[max(2rem,(100%_-_68.5rem)/3)] pr-6 lg:flex"
-      >
-        <div aria-hidden="true" className="pointer-events-none absolute -left-16 top-24 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgb(160_200_245/0.12),transparent_70%)] blur-2xl" />
+      <aside className="sticky top-0 z-40 hidden h-svh w-[calc(16.5rem+max(2rem,(100%_-_68.5rem)/3))] shrink-0 flex-col justify-between self-start py-24 pl-[max(2rem,(100%_-_68.5rem)/3)] pr-6 lg:flex">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -left-16 top-24 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgb(160_200_245/0.12),transparent_70%)] blur-2xl"
+        />
         <Ambient stars={10} fireflies={2} />
         <CloudDrift />
 
@@ -133,7 +104,7 @@ export function Sidebar() {
           {links.map((link, index) => (
             <a
               key={link.id}
-              href={link.href}
+              href={`#${link.id}`}
               className={cn(
                 "side-link font-mono text-[1.02rem] uppercase tracking-[0.16em]",
                 activeSection === link.id && "is-active",
@@ -199,7 +170,7 @@ export function Sidebar() {
               {links.map((link) => (
                 <a
                   key={link.id}
-                  href={link.href}
+                  href={`#${link.id}`}
                   onClick={() => setIsOpen(false)}
                   className="border-b border-[var(--border)] py-4 text-sm font-medium text-[var(--text-muted)] transition-colors hover:text-[var(--text-main)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
                 >
@@ -211,18 +182,5 @@ export function Sidebar() {
         </div>
       </nav>
     </>
-  );
-}
-
-function CloudDrift() {
-  return (
-    <div aria-hidden="true" className="pointer-events-none absolute right-0 top-1 w-80">
-      <div className="cloud-cluster-static relative h-24 w-80">
-        <span className="absolute bottom-3 left-2 h-9 w-24 rounded-full bg-[linear-gradient(150deg,rgb(150_176_208/0.2),rgb(60_84_114/0.24))]" />
-        <span className="absolute left-20 top-0 h-14 w-28 rounded-full bg-[linear-gradient(150deg,rgb(170_196_226/0.24),rgb(64_90_120/0.26))]" />
-        <span className="absolute bottom-1 left-40 h-10 w-20 rounded-full bg-[linear-gradient(150deg,rgb(140_168_200/0.2),rgb(52_76_104/0.24))]" />
-        <span className="absolute bottom-4 right-0 h-9 w-24 rounded-full bg-[linear-gradient(150deg,rgb(150_176_208/0.2),rgb(60_84_114/0.24))]" />
-      </div>
-    </div>
   );
 }

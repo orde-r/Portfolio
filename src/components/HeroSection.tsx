@@ -1,6 +1,9 @@
+import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowDown, Download, GraduationCap, Trophy } from "lucide-react";
+import { contact } from "../data/contact";
 import { Ambient } from "./Ambient";
+import { ButtonLink } from "./ButtonLink";
 import { CloudCluster } from "./CloudCluster";
 import { Moon } from "./Moon";
 
@@ -9,7 +12,7 @@ const highlights = [
   { icon: Trophy, text: "Semifinalist - elevAIte x Microsoft Hackathon 2025" },
 ];
 
-function Em({ children }: { children: React.ReactNode }) {
+function Em({ children }: { children: ReactNode }) {
   return <strong className="font-medium text-[var(--text-main)]">{children}</strong>;
 }
 
@@ -72,21 +75,14 @@ export function HeroSection() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3">
-          <a
-            href="/CV_Danielson.pdf"
-            download="CV_Danielson.pdf"
-            className="interactive-button inline-flex h-11 items-center gap-2 rounded-lg bg-[var(--accent-strong)] px-7 text-sm font-semibold text-[var(--ink)] shadow-[0_10px_30px_rgb(150_190_235/0.18)] hover:bg-white hover:shadow-[0_14px_38px_rgb(170_205_245/0.26)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-          >
+          <ButtonLink href={contact.cvUrl} download={contact.cvFileName}>
             Download CV
             <Download size={16} />
-          </a>
-          <a
-            href="#projects"
-            className="group interactive-button inline-flex h-11 items-center gap-2.5 rounded-lg border border-[var(--accent)]/60 px-7 text-sm font-medium text-[var(--accent-strong)] hover:bg-[var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-          >
+          </ButtonLink>
+          <ButtonLink href="#projects" variant="secondary" className="group">
             See my work
             <ArrowDown size={16} className="transition-transform duration-300 group-hover:translate-y-0.5" />
-          </a>
+          </ButtonLink>
         </div>
       </motion.div>
     </section>
